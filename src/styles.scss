@@ -32,8 +32,25 @@ body {
   padding: 4px 12px;
 }
 
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+
 .spinner {
-  font-weight: bold;
-  padding: 10px;
-  color: darkblue;
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  border: 5px solid lightgray;
+  border-top: 5px solid #3f51b5;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

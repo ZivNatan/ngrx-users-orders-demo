@@ -8,6 +8,7 @@ import * as UsersActions from '../../users/users.actions';
 import { UserOrdersComponent } from '../user-orders/user-orders.component';
 import { User } from '../../users/users.models';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-users',
@@ -54,7 +55,6 @@ selectUser(userId: number ) {
   }
 
   editUser(user: User, e:any) {
-    debugger
     if (!this.showForm && user.id == this.selectedUserId() ) {
       e.stopPropagation();
     }

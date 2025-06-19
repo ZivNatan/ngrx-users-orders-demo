@@ -28,7 +28,20 @@ export const loadUserDetailsFailure = createAction(
   props<{ error: any }>()
 );
 
-export const addUser = createAction('[Users] Add User', props<{ user: User }>());
+export const addUser = createAction(
+  '[Users] Add User',
+  props<{ user: User }>()
+);
+
+export const addUserSuccess = createAction(
+  '[Users] Add User Success',
+  props<{ user: User; updated: boolean }>()
+);
+
+export const addUserFailure = createAction(
+  '[Users] Add User Failure',
+  props<{ error: any }>()
+);
 
 export const updateUser = createAction(
   '[Users] Update User',
@@ -40,3 +53,12 @@ export const deleteUser = createAction(
   props<{ userId: number }>()
 );
 
+export const deleteUserSuccess = createAction(
+  '[Users] Delete User Success',
+  props<{ userId: number }>()
+);
+
+export const updateUserSuccess = createAction(
+  '[Users] Update User Success',
+  props<{ user: User }>()
+);

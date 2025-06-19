@@ -11,10 +11,9 @@ export const selectAllUsers = createSelector(
   usersAdapter.getSelectors().selectAll
 );
 
-
 export const selectSelectedUserId = createSelector(
   selectUsersState,
-  state => state.selectedUserId
+  (state) => state.selectedUserId
 );
 
 export const selectEntities = createSelector(
@@ -27,16 +26,20 @@ export const selectIds = createSelector(
   usersAdapter.getSelectors().selectIds
 );
 
-
 export const selectSelectedUser = createSelector(
   selectEntities,
   selectSelectedUserId,
-  (entities, selectedId) => selectedId !== null ? entities[selectedId] : null
+  (entities, selectedId) => (selectedId !== null ? entities[selectedId] : null)
 );
 
 export const selectUsersLoading = createSelector(
   selectUsersState,
-  state => state.loading
+  (state) => state.loading
+);
+
+export const selectUserEntities = createSelector(
+  selectUsersState,
+  (state) => state.entities
 );
 
 export function injectUsersSelectors() {
@@ -44,6 +47,6 @@ export function injectUsersSelectors() {
 
   return {
     users: toSignal(select(selectAllUsers)),
-    selectedUser: toSignal(select(selectSelectedUser))
+    selectedUser: toSignal(select(selectSelectedUser)),
   };
 }
