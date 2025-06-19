@@ -1,0 +1,80 @@
+<div class="container">
+  <section>
+    <h2>Users</h2>
+     <div *ngIf="loading()" class="spinner">Loading...</div>
+
+    <ul>
+      <li
+        *ngFor="let user of users()"
+        class="list-item"
+        (click)="selectUser(user.id)"
+        [class.selected]="user.id === selectedUserId()"
+      >
+        <button class="btn">
+          <i
+            class="fas fa-minus"
+            [class.fa-check]="user.id === selectedUserId()"
+          ></i>
+        </button>
+        <button (click)="deleteUser(user.id)" class="btn btn-danger">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+        <button (click)="editUser(user, $event)" class="btn btn-default">
+          <i class="fas fa-edit"></i>
+        </button>
+
+        <span class="name"> {{ user.name }}</span>
+      </li>
+    </ul>
+    <button (click)="showAddUserForm()" class="btn btn-default btn-text">
+      Add User
+    </button>
+    <app-user-orders></app-user-orders>
+  </section>
+
+  <section>
+    <ng-container *ngIf="showForm">
+      <h3>Add / Edit User</h3>
+      <form (ngSubmit)="submitUser()" #userForm="ngForm" class="form">
+        <div class="form-field">
+          <span class="label"> Id:</span>
+          <input
+            class="form-input"
+            type="number"
+            [(ngModel)]="userFormData.id"
+            name="id"
+            required
+            placeholder="ID"
+          />
+        </div>
+        <div class="form-field">
+          <span class="label"> Name:</span>
+          <input
+            class="form-input"
+            type="text"
+            [(ngModel)]="userFormData.name"
+            name="name"
+            required
+            placeholder="Name"
+          />
+        </div>
+        <div class="action-btns-container">
+          <button
+            class="form-field"
+            type="submit"
+            class="btn btn-success btn-text"
+          >
+            Save
+          </button>
+          <button
+            class="form-field"
+            (click)="closeForm()"
+            class="btn btn-default btn-text"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </ng-container>
+  </section>
+</div>
