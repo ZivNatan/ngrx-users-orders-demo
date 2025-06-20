@@ -16,7 +16,7 @@
             [class.fa-check]="user.id === selectedUserId()"
           ></i>
         </button>
-        <button (click)="deleteUser(user.id)" class="btn btn-danger">
+        <button (click)="deleteUser(user.id, $event)" class="btn btn-danger">
           <i class="fas fa-trash-alt"></i>
         </button>
         <button (click)="editUser(user, $event)" class="btn btn-default">

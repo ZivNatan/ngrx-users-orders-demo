@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { toSignal } from '@angular/core/rxjs-interop';
 
-import * as UsersSelectors from '../../users/users.selectors';
-import * as UsersActions from '../../users/users.actions';
+import * as UsersSelectors from '../../users.selectors';
+import * as UsersActions from '../../users.actions';
 import { UserOrdersComponent } from '../user-orders/user-orders.component';
-import { User } from '../../users/users.models';
+import { User } from '../../users.models';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
@@ -45,7 +45,8 @@ selectUser(userId: number ) {
 }
 
 
-  deleteUser(userId: number) {
+  deleteUser(userId: number, e: any) {
+    e.stopPropagation();
     this.store.dispatch(UsersActions.deleteUser({ userId }));
   }
 

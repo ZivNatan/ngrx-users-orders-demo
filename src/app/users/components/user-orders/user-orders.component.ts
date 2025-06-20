@@ -2,12 +2,12 @@ import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 
-import * as UsersSelectors from '../../users/users.selectors';
-import * as OrdersSelectors from '../../orders/orders.selectors';
+import * as UsersSelectors from '../../../users/users.selectors';
+import * as OrdersSelectors from '../../../orders/orders.selectors';
 
 import { toSignal } from '@angular/core/rxjs-interop';
 import { UserTotalComponent } from '../user-total/user-total.component';
-import { UserNameComponent } from '../user-name/user-name.component';
+import { UserNameComponent } from '../../../users/components/user-name/user-name.component';
 
 
 @Component({
